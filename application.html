@@ -19,13 +19,24 @@
           <a id="forkme_banner" href="https://github.com/Cmdu76">View on GitHub</a>
 
 		  <h1 id="project_title">Cmdu76's blog</h1>
-          <h2 id="project_tagline"><a href="https://github.com/Cmdu76/cmdu76.github.io">Repository</h2>
+			<h2 id="project_tagline"><a href="https://github.com/Cmdu76/cmdu76.github.io">Repository</a></h2>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<p>This article is an old not-that-good article which I use as a template page</p>
+<br/>
+<br/>
+<br/>
+<br/>
         
 <h3><a id="welcome-to-cmdu76s-github-page" class="anchor" href="#welcome-to-cmdu76s-github-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Game Engine Entry</h3>
 <p>This article will explain how I manage the launching of the game engine and so the game itself.</p>
@@ -42,12 +53,12 @@
 <h4>I – main()</h4>
 <p>Our main() function will be very simple, but I think it requires some explanations to understand properly all the content of the article.</p>
 <p>So, here you have my main() function yet (It might have change a bit)</p>
-<code language="cpp">int main()<br/>
-{<br/>
-Application app;<br/>
-app.start&lt;MyState&gt;();<br/>
-return 0;<br/>
-}</code>
+<pre>int main()
+{
+    Application app;
+    app.start&lt;MyState&gt;();
+    return 0;
+}</pre>
 <p>As you can see, Application is one of the most important classes of our game engine. This class will handle a lot of things like the window, the game loop and a lot more if you want.</p>
 <p>I could add parameters to the constructor of the application like the size of the window, but for the example I want to keep things as simple as possible.</p>
 <p>The start() function take a template parameter. This parameter is used to set the beginning state of the game. I will explain it in detail in the States part of this article.</p>
@@ -58,14 +69,11 @@ return 0;<br/>
 <p>The Application class will handle the window. We have to create it with the good settings, we want to check every frame if it’s still open and more important, we will get events from it.</p>
 <p>There are two way to get events from the OS. One is blocking and the other is not for example, in the SFML, waitEvent() is blocking and pollEvent() isn’t. We want our game engine to run at full speed and not only when an event is received, so we will use the non-blocking option.</p>
 <p>Let’s create the events() function :</p>
-<code language="cpp">void events()<br/>
-{<br/>
-sf::Event event;<br/>
-while (mWindow.pollEvent(event))<br/>
-{<br/>
-mStates.handleEvent(event); // I will explain this latter<br/>
-}<br/>
-}</code>
+<pre>sf::Event event;
+while (mWindow.pollEvent(event))
+{
+    mStates.handleEvent(event); // I will explain this latter
+}</pre>
 
 
 
